@@ -5,6 +5,7 @@ Just a place to add my tests with react
 
 # Install
 
+```
 git clone https://github.com/yabadabu/react-playground.git
 cd react-playground.git
 npm install
