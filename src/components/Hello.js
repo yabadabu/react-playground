@@ -3,7 +3,10 @@ import TableData from './TableData';
 import TextInput from './TextInput';
 import Immutable from 'Immutable';
 
-// Exxample of using facebook immutable js api
+// https://facebook.github.io/immutable-js/docs/#/Map/forEach
+// https://github.com/facebook/immutable-js/wiki/Immutable-as-React-state
+// http://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js/
+// http://jlongster.com/Using-Immutable-Data-Structures-in-JavaScript
 
 export default class Hello extends React.Component {
 
@@ -39,18 +42,28 @@ export default class Hello extends React.Component {
   handleDelete( field, line ) {
     if( line != null ) {
       console.log( "Deleting line" + line);
+      let new_val = {name:null, age:null};
+      this.setState( {db_data: this.state.db_data.updateIn(["_deleted"], ()=>true) } );
     }
   }
 
-  handleChange( field, new_value, line, sub_field, sub_value ) {
+  // Adding a new item
+  handleAdd( field ) {
+    console.log( "Adding a new item");
+    let new_val = {name:null, age:null};
+    this.setState( {db_data: this.state.db_data.update(field, list=>list.push( Immutable.fromJS(new_val) )) } );
+  }
+
+  handleChange( field, new_value, line, sub_field ) {
+    let addr;
     if( line != null ) {
-      console.log( "Changing field of line", line )
-      this.setState( {db_data: this.state.db_data.updateIn([field, line, sub_field], ()=>sub_value) } );
+      addr = [field, line, sub_field];
+      console.log( "Changing field of line", line, new_value )
     } else {
+      addr = [field];
       console.log( "Changing field", field, new_value )
-      this.setState( {db_data: this.state.db_data.updateIn([field], ()=>new_value) } );
     }
-    // Add one to the current age
+    this.setState( {db_data: this.state.db_data.updateIn(addr, ()=>new_value) } );
   }
 
   render() {
@@ -64,13 +77,14 @@ export default class Hello extends React.Component {
         entries.push ( <TableData key={field} field={field} values={v}
                                   onChange={this.handleChange.bind(this)}
                                   onDelete={this.handleDelete.bind(this)}
+                                  onAdd={this.handleAdd.bind(this)}
                                   />)
 
       } else {
         //console.log( "Rendering field", field);
-        entries.push ( <TextInput key={field} field={field} value={v}
+        entries.push ( <div key={field} ><TextInput field={field} value={v}
                                   onChange={this.handleChange.bind(this)}
-                                  />)
+                                  /></div>)
       }
 
     })

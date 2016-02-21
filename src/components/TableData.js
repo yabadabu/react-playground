@@ -21,8 +21,12 @@ export default class TableData extends React.Component {
                         />)
     })
 
-    return (<ul>
+    var add_button = (<button onClick={()=>{this.props.onAdd( this.props.field )}}>Add New</button>);
+
+    return (<div><ul>
       {flds} 
-      </ul>)
+      </ul>
+      {add_button}
+      </div>)
   }
 }

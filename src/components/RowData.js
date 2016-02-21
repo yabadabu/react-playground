@@ -13,7 +13,7 @@ export default class RowData extends React.Component {
   handleChange( k, new_value ) {
     console.log( "Row change", k, new_value );
     console.log( k, new_value );
-    this.props.onChange( this.props.field, null, this.props.line, k, new_value );
+    this.props.onChange( this.props.field, new_value, this.props.line, k );
   }
 
   render() {
