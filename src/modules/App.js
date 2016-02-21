@@ -10,6 +10,7 @@ export default class App extends React.Component {
 
         <ul role="nav">
           <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/Hello">Hello Section</NavLink></li>
           <li><NavLink to="/repos/john">All repos of john</NavLink></li>
           <li><NavLink to="/repos/john/34322">Repos of john id 34322</NavLink></li>
         </ul>
