@@ -1,3 +1,8 @@
+/* Variables */
+$vin-blue: #5bb7db;
+$vin-green: #60b044;
+$vin-red: #ff0000;
+
 body {
   font: 14px 'Roboto', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
@@ -10,5 +15,55 @@ body {
 }
 
 .active {
-  background-color:#ffa0ff;
+  background-color:#ffc0ff;
+}
+
+td {
+  padding: 0px;
+  padding-left: 16px;
+}
+
+th {
+  padding: 0px;
+  padding-right:8px;
+}
+
+h2 {
+  color: $vin-blue;
+}
+
+table.search_results {
+  width:100%;
+}
+
+table.search_results th {
+  background-color: $vin-blue;
+}
+
+table.search_results tr:nth-child(even) {
+  background-color: #eee;
+}
+table.search_results tr:nth-child(odd) {
+  background-color:#fff;
+}
+
+.currency {
+  text-align:right
+}
+// Added a non-breaking space
+.currency::after { content: "\a0€" }
+
+div.main_section {
+  zIndex: 0;
+  width: '100%';
+}
+
+div.proforma {
+  margin-right:8px;
+  margin-left:8px;
+}
+
+div.form_input {
+  padding-right:8px;
+  margin-left:8px;
 }

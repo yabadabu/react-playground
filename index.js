@@ -3,4 +3,4 @@ import './src/styles/styles.scss'; //Yep, that's right. You can import SASS/CSS 
 import App from './src/modules/App'
 import About from './src/modules/About'
 import Repos from './src/modules/Repos'
-import Hello from './src/components/Hello'
+import * as layouts from './src/store/db_layouts.js';

@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput';
+import CompFormText from './form/CompFormText';
 
 export default class RowData extends React.Component {
   
@@ -23,7 +23,7 @@ export default class RowData extends React.Component {
     var flds = [];
     this.props.values.forEach( (v,k)=> { 
       flds.push( 
-        <TextInput key={k} field={k} value={v} onChange={this.handleChange.bind( this )}/>
+        <CompFormText key={k} field={k} value={v} onChange={this.handleChange.bind( this )}/>
       )
     });
 
